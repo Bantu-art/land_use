@@ -1,0 +1,9 @@
+<h2>Upload Two Aerial Images</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        {{ form1.as_p }}
+        {{ form2.as_p }}
+    </div>
+    <button type="submit">Compare Images</button>
+</form>
