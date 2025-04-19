@@ -32,10 +32,15 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',') if os.getenv('ALLOWED_HOSTS') else []
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'landapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
