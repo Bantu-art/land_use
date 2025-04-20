@@ -1,9 +1,48 @@
-<h2>Upload Two Aerial Images</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div>
-        {{ form1.as_p }}
-        {{ form2.as_p }}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Upload Images for Comparison</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <h4>First Image</h4>
+                            <div class="mb-3">
+                                <label for="id_img1-title" class="form-label">Title</label>
+                                {{ form1.title }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_img1-image" class="form-label">Image</label>
+                                {{ form1.image }}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4>Second Image</h4>
+                            <div class="mb-3">
+                                <label for="id_img2-title" class="form-label">Title</label>
+                                {{ form2.title }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_img2-image" class="form-label">Image</label>
+                                {{ form2.image }}
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Compare Images</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <button type="submit">Compare Images</button>
-</form>
+</div>
+{% endblock %}
