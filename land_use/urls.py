@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.upload_images, name='upload'),
-    # We'll add 'compare/' path after we build the OpenCV logic
+    path('compare/<int:img1_id>/<int:img2_id>/', views.compare_images, name='compare'),
 ]
 
 if settings.DEBUG:
