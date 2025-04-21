@@ -120,4 +120,62 @@ def classify_changes(img1, img2, change_mask):
         
     return output
 
-# ... existing code ...
+def process_images(img1_path, img2_path):
+    """
+    Process two images to detect and visualize land use changes.
+    
+    This is the main function that orchestrates the entire process:
+    1. Reads and resizes the input images
+    2. Detects changes using LAB color space analysis
+    3. Classifies the changes into different types
+    4. Creates a visualization with a legend
+    5. Returns the result as a base64-encoded PNG image
+    
+    Args:
+        img1_path (str): Path to the first image
+        img2_path (str): Path to the second image
+        
+    Returns:
+        str: Base64-encoded PNG image showing the change detection results
+    """
+    # Read images
+    img1 = cv2.imread(img1_path)
+    img2 = cv2.imread(img2_path)
+    
+    # Resize images to match
+    img2 = cv2.resize(img2, (img1.shape[1], img1.shape[0]))
+    
+    # Detect changes
+    change_mask = detect_land_changes(img1, img2)
+    
+    # Classify and visualize changes
+    result = classify_changes(img1, img2, change_mask)
+    
+    # Convert BGR to RGB for matplotlib
+    result_rgb = cv2.cvtColor(result, cv2.COLOR_BGR2RGB)
+    
+    # Create the plot
+    plt.figure(figsize=(12, 8))
+    plt.imshow(result_rgb)
+    plt.title('Land Use Change Detection')
+    
+    # Create legend
+    legend_elements = [
+        Patch(facecolor='yellow', edgecolor='yellow', label='Major Changes'),
+        Patch(facecolor='orange', edgecolor='orange', label='Color Changes'),
+        Patch(facecolor='green', edgecolor='green', label='Subtle Changes')
+    ]
+    plt.legend(handles=legend_elements, loc='upper right')
+    
+    plt.axis('off')
+    plt.tight_layout()
+    
+    # Save plot to BytesIO object
+    buf = BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    plt.close()
+    
+    # Convert to base64 string
+    image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+    return image_base64
