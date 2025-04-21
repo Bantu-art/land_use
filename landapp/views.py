@@ -6,6 +6,19 @@ import os
 from django.conf import settings
 
 def upload_images(request):
+    """
+    Handle the upload of two images via a form.
+
+    If the request method is POST, validate the forms and save the uploaded images.
+    If both forms are valid, redirect to the 'compare' view with the IDs of the uploaded images.
+    If the request method is GET, render the upload form.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The rendered upload page or a redirect to the 'compare' view.
+    """
     if request.method == 'POST':
         form1 = ImageUploadForm(request.POST, request.FILES, prefix="img1")
         form2 = ImageUploadForm(request.POST, request.FILES, prefix="img2")
@@ -19,6 +32,19 @@ def upload_images(request):
     return render(request, 'upload.html', {'form1': form1, 'form2': form2})
 
 def compare_images(request, img1_id, img2_id):
+    """
+    Compare two uploaded images and display the result.
+
+    Retrieve the images by their IDs, process them, and render the comparison result.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+        img1_id (int): The ID of the first image.
+        img2_id (int): The ID of the second image.
+
+    Returns:
+        HttpResponse: The rendered comparison page with the images and the result.
+    """
     img1 = AerialImage.objects.get(id=img1_id)
     img2 = AerialImage.objects.get(id=img2_id)
     
