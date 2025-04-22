@@ -26,6 +26,32 @@ This system allows users to:
 - **Image Processing**: OpenCV, NumPy, Matplotlib
 - **Database**: SQLite3
 
+## Prerequisites
+
+Before starting the installation, ensure you have the following installed on your system:
+
+- Python 3.8 or higher
+- pip (Python package installer)
+- Git
+- Virtual environment tools (python3-venv)
+- Basic development tools (build-essential)
+
+To install these prerequisites on Ubuntu/Debian, run:
+```bash
+sudo apt update
+sudo apt install python3 python3-pip python3-venv git build-essential -y
+```
+
+For Windows users:
+- Install Python 3.8 or higher from [python.org](https://www.python.org/downloads/)
+- Install Git from [git-scm.com](https://git-scm.com/downloads)
+- Make sure to check "Add Python to PATH" during installation
+
+For macOS users:
+```bash
+brew install python3 git
+```
+
 ## Installation
 
 1. Clone the repository:
