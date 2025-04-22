@@ -54,4 +54,12 @@ htmlcov/
 .coverage.*
 .cache
 coverage.xml
-*.cover 
+*.cover
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Docker
+.docker/
+docker-compose.override.yml 
