@@ -25,49 +25,8 @@ This system allows users to:
 - **Frontend**: HTML, CSS, JavaScript
 - **Image Processing**: OpenCV, NumPy, Matplotlib
 - **Database**: PostgreSQL
-- **Containerization**: Docker, Docker Compose
 
 ## Installation
-
-### Option 1: Docker Installation (Recommended)
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Bantu-art/land_use.git
-cd land_use
-```
-
-2. Set up environment variables:
-```bash
-# Copy the example environment file
-cp .env.example .env
-
-# Edit the .env file with your configuration
-# Required settings:
-# - SECRET_KEY: Generate a new one using:
-#   python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-# - DEBUG: Set to True for development, False for production
-# - ALLOWED_HOSTS: Add your domain or IP addresses
-```
-
-3. Build and start the containers:
-```bash
-docker-compose up --build
-```
-
-4. Run migrations:
-```bash
-docker-compose exec web python manage.py migrate
-```
-
-5. Create a superuser (optional):
-```bash
-docker-compose exec web python manage.py createsuperuser
-```
-
-The application will be available at `http://localhost:8000`
-
-### Option 2: Manual Installation
 
 1. Clone the repository:
 ```bash
@@ -145,9 +104,7 @@ land_use/
 ├── manage.py          # Django management script
 ├── requirements.txt   # Project dependencies
 ├── .env.example      # Environment variables template
-├── .env              # Environment variables (not in version control)
-├── Dockerfile        # Docker configuration
-└── docker-compose.yml # Docker Compose configuration
+└── .env              # Environment variables (not in version control)
 ```
 
 ## Usage

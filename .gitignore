@@ -31,21 +31,28 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media/
-staticfiles/
+static/
 
 # Virtual Environment
 venv/
 ENV/
 env/
-.env/
-.venv/
+.env
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+*~
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Project specific
+*.env
+!.env.example
 
 # Coverage reports
 htmlcov/
@@ -54,12 +61,4 @@ htmlcov/
 .coverage.*
 .cache
 coverage.xml
-*.cover
-
-# Docker
-.docker/
-docker-compose.override.yml
-
-# Docker
-.docker/
-docker-compose.override.yml 
+*.cover 
