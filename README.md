@@ -36,13 +36,13 @@ cd land_use
 
 2. Create and activate a virtual environment:
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
 3. Install dependencies:
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 4. Set up environment variables:
@@ -60,17 +60,17 @@ cp .env.example .env
 
 5. Run migrations:
 ```bash
-python manage.py migrate
+python3 manage.py migrate
 ```
 
 6. Create a superuser (optional):
 ```bash
-python manage.py createsuperuser
+python3 manage.py createsuperuser
 ```
 
 7. Start the development server:
 ```bash
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 ## Environment Variables
