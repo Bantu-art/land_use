@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ImageUploadForm
 from .models import AerialImage
 from .image_utils import process_images
@@ -45,8 +45,8 @@ def compare_images(request, img1_id, img2_id):
     Returns:
         HttpResponse: The rendered comparison page with the images and the result.
     """
-    img1 = AerialImage.objects.get(id=img1_id)
-    img2 = AerialImage.objects.get(id=img2_id)
+    img1 = get_object_or_404(AerialImage, id=img1_id)
+    img2 = get_object_or_404(AerialImage, id=img2_id)
     
     # Get absolute paths of the images
     img1_path = os.path.join(settings.MEDIA_ROOT, str(img1.image))
