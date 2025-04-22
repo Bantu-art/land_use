@@ -24,7 +24,7 @@ This system allows users to:
 - **Backend**: Django 5.2
 - **Frontend**: HTML, CSS, JavaScript
 - **Image Processing**: OpenCV, NumPy, Matplotlib
-- **Database**: PostgreSQL
+- **Database**: SQLite3
 
 ## Installation
 
@@ -86,7 +86,7 @@ The following environment variables are required:
 - `STATIC_URL`: URL prefix for static files
 
 Optional variables:
-- `DATABASE_URL`: Database connection URL (if using PostgreSQL)
+- `DATABASE_URL`: Database connection URL (if using SQLite3)
 - `EMAIL_*`: Email settings for notifications
 - `MAX_IMAGE_SIZE`: Maximum allowed image size in bytes
 - `ALLOWED_IMAGE_TYPES`: Comma-separated list of allowed image types
