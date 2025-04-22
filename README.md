@@ -23,7 +23,7 @@ This system allows users to:
 
 - **Backend**: Django 5.2
 - **Frontend**: HTML, CSS, JavaScript
-- **Image Processing**: OpenCV, NumPy
+- **Image Processing**: OpenCV, NumPy, Matplotlib
 - **Database**: SQLite (development), PostgreSQL (production)
 - **Deployment**: Docker (optional)
 
@@ -48,8 +48,15 @@ pip install -r requirements.txt
 
 4. Set up environment variables:
 ```bash
+# Copy the example environment file
 cp .env.example .env
-# Edit .env with your configuration
+
+# Edit the .env file with your configuration
+# Required settings:
+# - SECRET_KEY: Generate a new one using:
+#   python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+# - DEBUG: Set to True for development, False for production
+# - ALLOWED_HOSTS: Add your domain or IP addresses
 ```
 
 5. Run migrations:
@@ -57,10 +64,33 @@ cp .env.example .env
 python manage.py migrate
 ```
 
-6. Start the development server:
+6. Create a superuser (optional):
+```bash
+python manage.py createsuperuser
+```
+
+7. Start the development server:
 ```bash
 python manage.py runserver
 ```
+
+## Environment Variables
+
+The following environment variables are required:
+
+- `SECRET_KEY`: Django secret key for cryptographic signing
+- `DEBUG`: Debug mode (True/False)
+- `ALLOWED_HOSTS`: Comma-separated list of allowed hostnames
+- `MEDIA_ROOT`: Directory for uploaded media files
+- `MEDIA_URL`: URL prefix for media files
+- `STATIC_ROOT`: Directory for collected static files
+- `STATIC_URL`: URL prefix for static files
+
+Optional variables:
+- `DATABASE_URL`: Database connection URL (if using PostgreSQL)
+- `EMAIL_*`: Email settings for notifications
+- `MAX_IMAGE_SIZE`: Maximum allowed image size in bytes
+- `ALLOWED_IMAGE_TYPES`: Comma-separated list of allowed image types
 
 ## Project Structure
 
@@ -73,7 +103,9 @@ land_use/
 │   ├── templates/     # HTML templates
 │   └── static/        # Static files
 ├── manage.py          # Django management script
-└── requirements.txt   # Project dependencies
+├── requirements.txt   # Project dependencies
+├── .env.example      # Environment variables template
+└── .env              # Environment variables (not in version control)
 ```
 
 ## Usage

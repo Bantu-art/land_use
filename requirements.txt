@@ -1,2 +1,14 @@
+# Django and web framework
 Django>=5.2,<5.3
-python-dotenv>=1.0.0 
+python-dotenv>=1.0.0
+
+# Image processing
+opencv-python>=4.8.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+Pillow>=10.0.0  # Required for image handling in Django
+
+# Development tools
+pytest>=7.0.0  # For testing
+black>=23.0.0  # For code formatting
+flake8>=6.0.0  # For linting 
